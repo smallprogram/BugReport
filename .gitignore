@@ -1,0 +1,8 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/AntDesignBlazor_Table_bug/.vs/AntDesignBlazor_Table_bug/DesignTimeBuild
+/AntDesignBlazor_Table_bug/.vs/AntDesignBlazor_Table_bug
+/AntDesignBlazor_Table_bug/AntDesignBlazor_Table_bug/bin/Debug/net6.0
+/AntDesignBlazor_Table_bug/AntDesignBlazor_Table_bug/obj

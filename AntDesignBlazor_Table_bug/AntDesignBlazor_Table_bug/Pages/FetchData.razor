@@ -1,0 +1,94 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using AntDesignBlazor_Table_bug.Data
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <Table DataSource="forecasts"
+           TItem="WeatherForecast"
+           RowClassName="@(x=> x.RowIndex%2 == 0? "table-success":"table-warning")"
+           PageSize="15" ScrollX="1500" ScrollY="600">
+
+        <Column TData="DateTime"
+                Title="Date"
+                @bind-Field="context.Date"
+                Sortable
+                Filterable
+                Width="150"
+                Fixed="left" />
+
+        <Column TData="int"
+                Title="TemperatureF"
+                @bind-Field="context.TemperatureF"
+                Filterable
+                Width="150"
+                Fixed="left" />
+
+        <Column TData="int"
+                Title="TemperatureC"
+                @bind-Field="context.TemperatureC"
+                Filterable
+                Width="150"
+                Fixed="left" />
+
+        
+
+        <Column TData="string"
+                Title="Column1"
+                @bind-Field="context.Column1"
+                Width="200"
+
+                />
+
+        <Column TData="string"
+                Title="Column2"
+                @bind-Field="context.Column2"
+                Width="200"
+
+                />
+
+        <Column TData="string"
+                Title="Column3"
+                @bind-Field="context.Column3"
+                Width="200"
+
+                />
+
+        <Column TData="string"
+                Title="Column4"
+                @bind-Field="context.Column4"
+                />
+
+        <Column TData="string"
+                Title="Summary"
+                @bind-Field="context.Summary"
+                SorterCompare="@((a,b)=> string.Compare(a,b))"
+                SortDirections="new[] { SortDirection.Descending }"
+                Filterable
+                Width="80"
+                Fixed="right"
+                />
+
+
+    </Table>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}
