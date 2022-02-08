@@ -18,7 +18,7 @@ else
     <Table DataSource="forecasts"
            TItem="WeatherForecast"
            RowClassName="@(x=> x.RowIndex%2 == 0? "table-success":"table-warning")"
-           PageSize="15" ScrollX="1500" ScrollY="600">
+           PageSize="10" ScrollX="1500" ScrollY="300">
 
         <Column TData="DateTime"
                 Title="Date"
